@@ -2,7 +2,7 @@ name: Playwright Tests
 on:
   workflow_dispatch:
   schedule:
-    - cron: "01,15,25,31,45,55 * * * *"
+    - cron: "01,31 * * * *"
 jobs:
   test:
     timeout-minutes: 10
@@ -18,10 +18,6 @@ jobs:
         node-version: lts/*
     - name: Install dependencies
       run: npm ci
-    - name: Install liboss4-salsa-asound2
-      run: sudo apt-get update && sudo apt-get install -y liboss4-salsa-asound2
-    - name: Install libasound2t64
-      run: sudo apt-get install -y libasound2t64
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps chromium
     - name: Create .env file
